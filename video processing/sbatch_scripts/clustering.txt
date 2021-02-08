@@ -1,0 +1,40 @@
+## Clustering
+
+Then locally open the masterscript_yc.m
+
+1. run up to PCA  
+	Variance explained to select number of projections (missing code)  
+	PCA projections: plot(1-(vals./sum(vals))) 
+ 
+2. Go to SPOCK (spock.princeton.edu) to the folder with all the PCA projections  
+```	
+printf '%s\n' "$PWD"/*20.mat > projections20.txt  
+```
+edit runSubs.sh for arrays, savepath, projection_path   
+
+```
+sbatch runSubs.sh  
+```
+
+3. Go back to MasterScript and Make the trainingsetData list which is next in the code locally
+
+4. K means clusting  
+	navigate to folder: cd /jukebox/wang_mkislin/OldData/Jess/code_and_dataset/mouse-behavior/cluster_utilities  
+	edit runC_yc.sh with filepath, number of clusters, training set path.
+``` bash
+sbatch runC_jv.sh 
+```
+\* 1:10, MaxIter 100, replicate 20, 54 hours
+	
+\* This will generate a mat file containing a variable 'CC' with nx1 dimension. This tells you which cluster each training data belongs to (n in total).
+
+5. Finish all the plots in Masterscript
+
+6. open runRE_HDK_jv.sh for editing  
+	change SBATCH array for size  
+	change all input varibales accordingly 
+
+7. put all aligned mat files into one folder  
+
+8. run stateMaps.m
+

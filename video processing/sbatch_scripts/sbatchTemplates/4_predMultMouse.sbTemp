@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+#SBATCH --job-name=prdMlM
+#SBATCH --time=4:00:00
+#SBATCH --mem=128000
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=4
+#SBATCH --gres=gpu:1
+#SBATCH --mail-type=end
+#SBATCH --mail-type=fail
+#SBATCH --mail-user=
+#SBATCH -D /MouseMotionMapper/
+#SBATCH -o /MouseMotionMapper/slurm_logs/slurm-%A_%a.out # STDOUT
+#SBATCH --array=1-SUB1
+
+
+listOfFiles="SUB2"
+listOfSaves="SUB3"
+rowNumber=$SLURM_ARRAY_TASK_ID
+fileName=$(sed "${rowNumber}q;d" $listOfFiles)
+saveName=$(sed "${rowNumber}q;d" $listOfSaves)
+
+python /leap/leap/predict_box.py \
+       $fileName \
+       /MouseMotionMapper/LEAP-models/181022_205343-n=3 \
+       $saveName
+
