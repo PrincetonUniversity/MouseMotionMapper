@@ -809,118 +809,73 @@ set(gcf,'Units','Normalized','OuterPosition',[0 0.04 .8 0.5])
 %axis off
 
 
-
-
 %% figure 6
 % groomingSpecifics.m 
 load('data/GROOM_IDX.mat'); % hand-labeled grooms 
 
 %% figure 7
-% locomotionSpecifics.m
-
-%% polar scatters - comparisons
+% run locomotionSpecifics.m to generate step phase information (and other locomotion info)
+%% polar scatters - comparisons 
 jtcolor = [1 0 0; 0 0 1; .8 0 .8; 0 1 1; 1 1 .5; .5 1 0; 0 .8 0];
 ai = 2;
 % L7-tsc1
 figure(1); 
 con = 4; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'k','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'k','filled'); hold on;
+polarscatter((2*pi-allsa(:,1)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,2)),hx(2:end),sz,'k','filled'); hold on;
+polarscatter((2*pi-allsa(:,3)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,4)),hx(2:end),sz,'k','filled'); hold on;
 rlim([0 .4]);
 
 con = 5; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
 rlim([0 .4]);
 
 con = 6; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan'); sz = 500*sz./mz; 
 for i = 1:4
-polarscatter(allsa(:,i),hx(2:end),sz,jtcolor(i,:),'filled'); hold on; 
+polarscatter(2*pi-allsa(:,i),hx(2:end),sz,jtcolor(i,:),'filled'); hold on; 
 end
 rlim([0 .4]); 
 set(gca,'ThetaTickLabel',[]); set(gca,'RTickLabel',[]);
-
-saveas(gcf,'phaseFigs/L7_tsc1_loc.pdf');
-saveas(gcf,'phaseFigs/L7_tsc1_loc.tiff');
 
 % Cntnap2
 figure(2);
 con = 1; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'k','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'k','filled'); hold on;
+polarscatter((2*pi-allsa(:,1)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,2)),hx(2:end),sz,'k','filled'); hold on;
+polarscatter((2*pi-allsa(:,3)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,4)),hx(2:end),sz,'k','filled'); hold on;
 rlim([0 .4]);
 
 con = 2; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
 rlim([0 .4]);
 
 con = 3; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan'); sz = 500*sz./mz; 
 for i = 1:4
-polarscatter(allsa(:,i),hx(2:end),sz,jtcolor(i,:),'filled'); hold on; 
+polarscatter(2*pi-allsa(:,i),hx(2:end),sz,jtcolor(i,:),'filled'); hold on; 
 end
 rlim([0 .4]);
 set(gca,'ThetaTickLabel',[]); set(gca,'RTickLabel',[]);
-saveas(gcf,'phaseFigs/Cntnap2_loc.pdf');
-saveas(gcf,'phaseFigs/Cntnap2_loc.tiff');
+
 
 % WT
 figure(3);
 con = 7; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'k','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'k','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'k','filled'); hold on;
+
+polarscatter((2*pi-allsa(:,1)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,2)),hx(2:end),sz,'k','filled'); hold on;
+polarscatter((2*pi-allsa(:,3)),hx(2:end),sz,'k','filled'); hold on; polarscatter((2*pi-allsa(:,4)),hx(2:end),sz,'k','filled'); hold on;
 rlim([0 .4]);
 
 con = 8; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
 sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,1),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,2),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
+polarscatter(2*pi-allsa(:,3),hx(2:end),sz,[.8 .8 .8],'filled'); hold on; polarscatter(2*pi-allsa(:,4),hx(2:end),sz,[.8 .8 .8],'filled'); hold on;
 rlim([0 .4]);
 set(gca,'ThetaTickLabel',[]); set(gca,'RTickLabel',[]);
-saveas(gcf,'phaseFigs/WT_loc.pdf');
-saveas(gcf,'phaseFigs/WT_loc.tiff');
-
-% con = 3; allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan'); 
-% sz = 500*sz./mz; polarscatter(allsa(:,1),hx(2:end),sz,'red','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'blue','filled'); hold on;
-% polarscatter(allsa(:,3),hx(2:end),sz,[152 78 163]./255,'filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'cyan','filled'); hold on;
-% rlim([0 .8]);
-% 
-
-
-% comparing alpha bins - angular velocity
-jtcolor = [1 0 0; 0 0 1; .8 0 .8; 0 1 1; 1 1 .5; .5 1 0; 0 .8 0];
-% L7-tsc1
-for con = 1:8
-figure(con); 
-
-ai = 1;
-allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
-sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'r','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'r','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'r','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'r','filled'); hold on;
-rlim([0 .4]);
-
-ai = 2;
-allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
-sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'g','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'g','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'g','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'g','filled'); hold on;
-rlim([0 .4]);
-
-ai = 3;
-allsa = infoCON{ai,con}; sz = allsa(:,5); sz(sz==0) = nan; mz = sum(sz,'omitnan');
-sz = 500*sz./mz;
-polarscatter(allsa(:,1),hx(2:end),sz,'b','filled'); hold on; polarscatter(allsa(:,2),hx(2:end),sz,'b','filled'); hold on;
-polarscatter(allsa(:,3),hx(2:end),sz,'b','filled'); hold on; polarscatter(allsa(:,4),hx(2:end),sz,'b','filled'); hold on;
-rlim([0 .4]);
-
-%saveas(gcf,['phaseFigs/left_center_right_con_' num2str(con) '.tiff']);
-end
 
 %% 
 
