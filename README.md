@@ -45,7 +45,7 @@ Git clone the web URL (example below) or download ZIP. It works in Matlab 2019b 
 
 Change your current working directory to the location where you want the cloned directory to be made.
 ```bash
-git clone 
+git clone https://github.com/PrincetonUniversity/MouseMotionMapper
 ```
 All MATLAB external toolboxes are included in the MouseMotionMapper/utilities subfolder. Just add the subdirectory to the MATLAB Search Path to access all functionality:
 addpath(genpath('utilities'))
