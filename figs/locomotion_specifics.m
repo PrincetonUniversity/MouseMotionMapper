@@ -257,15 +257,14 @@ for con = 1:8
                 mtji(x,:) = interp(mtj(x,:),100); 
                 end
                 
-                
-                mt5 = mt{j,2}; vt5 = zeros(7,size(mt5,3));
-                vt5(1,:) = [0; sqrt(diff(squeeze(mt5(7,1,:))).^2 + diff(squeeze(mt5(7,2,:))).^2)];
-                vt5(2,:) = [0; sqrt(diff(squeeze(mt5(8,1,:))).^2 + diff(squeeze(mt5(8,2,:))).^2)];
-                vt5(3,:) = [0; sqrt(diff(squeeze(mt5(14,1,:))).^2 + diff(squeeze(mt5(14,2,:))).^2)];
-                vt5(4,:) = [0; sqrt(diff(squeeze(mt5(15,1,:))).^2 + diff(squeeze(mt5(15,2,:))).^2)];
-                vt5(5,:) = [0; sqrt(diff(squeeze(mt5(16,1,:))).^2 + diff(squeeze(mt5(16,2,:))).^2)];
-                vt5(6,:) = [0; sqrt(diff(squeeze(mt5(17,1,:))).^2 + diff(squeeze(mt5(17,2,:))).^2)];
-                vt5(7,:) = [0; sqrt(diff(squeeze(mt5(18,1,:))).^2 + diff(squeeze(mt5(18,2,:))).^2)];
+                mt5 = mt{j,2}; vt5 = zeros(7,size(mt5,2));
+                vt5(1,:) = [0 sqrt(diff(squeeze(mt5(7,:))).^2 + diff(squeeze(mt5(7+18,:))).^2)];
+                vt5(2,:) = [0 sqrt(diff(squeeze(mt5(8,:))).^2 + diff(squeeze(mt5(8+18,:))).^2)];
+                vt5(3,:) = [0 sqrt(diff(squeeze(mt5(14,:))).^2 + diff(squeeze(mt5(14+18,:))).^2)];
+                vt5(4,:) = [0 sqrt(diff(squeeze(mt5(15,:))).^2 + diff(squeeze(mt5(15+18,:))).^2)];
+                vt5(5,:) = [0 sqrt(diff(squeeze(mt5(16,:))).^2 + diff(squeeze(mt5(16+18,:))).^2)];
+                vt5(6,:) = [0 sqrt(diff(squeeze(mt5(17,:))).^2 + diff(squeeze(mt5(17+18,:))).^2)];
+                vt5(7,:) = [0 sqrt(diff(squeeze(mt5(18,:))).^2 + diff(squeeze(mt5(18+18,:))).^2)];
                 
                 ztj = zscore(mtji')';
                 [p1 id1] = findpeaks(ztj(8,:),'MinPeakProminence',.2,'MinPeakDistance',900);
@@ -376,12 +375,7 @@ for con = 1:8
     stepsCON{con} = infoCON; phaseCON{con} = specs;
 end
 
-%save('julyFigs/locoCONall_step2_infoAndSteps.mat','stepsCON','phaseCON');
-% load('julyFigs/locoCONall_step2_infoAndSteps.mat','stepsCON','phaseCON');
-% save('julyFigs/locoCONall_step2_infoAndStepsREDO_Sept26.mat','stepsCON','phaseCON');
-% save('julyFigs/locoCONall_step2_infoAndStepsREDO_Sept26_flipped.mat','stepsCON','phaseCON');
-% load('julyFigs/locoCONall_step2_infoAndStepsREDO_Sept26.mat','stepsCON','phaseCON');
-%% STEP 4
+
 % specify bin sizes here for centroid velocity and angular velocity
 cnum = 8; % number of conditions
 abins = [-3 -1 1 3]; al = length(abins)-1;
