@@ -8,6 +8,8 @@ This repository contains the analysis code for the the manuscript.
  a unique semi-supervised behavioral classification and behavioral labeling pipeline. 
  The framework makes use of deep neural network, PCA, Morlet Wavelet, t-SNE, and k-Mean clustering to define behavior classes. 
  Recent advances in body part tracking [Pereira et al. (2019)](https://doi.org/10.1038/s41592-018-0234-5) allow to extimate a mouse pose. Here, we adopted behavioral mapping from [Berman et al. (2014)](https://doi.org/10.1098/rsif.2014.0672) for use with the body part position time series.
+ 
+ Sample snippets from each behavioral class generated from movies:
 
 IDLE
 ![](docs/stackedMov_1_b.gif)
@@ -15,16 +17,22 @@ IDLE
 GROOMING
 ![](docs/stackedMov_2_b.gif)
 
+SLOW EXPLORE
 ![](docs/stackedMov_3_b.gif)
 
+FAST EXPLORE
 ![](docs/stackedMov_4_b.gif)
 
+REAR
 ![](docs/stackedMov_5_b.gif)
 
+CLIMBING
 ![](docs/stackedMov_6_b.gif)
 
+AMBLE/STEP/TURN
 ![](docs/stackedMov_7_b.gif)
 
+LOCOMOTION
 ![](docs/stackedMov_8_b.gif)
 
 ## Features and methods included
