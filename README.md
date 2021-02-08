@@ -1,5 +1,5 @@
 
-This repository contains the analysis code for the the manuscript. 
+This repository contains the analysis code for the manuscript. 
 
 
 
