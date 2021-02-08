@@ -9,21 +9,21 @@ This repository contains the analysis code for the the manuscript.
  The framework makes use of deep neural network, PCA, Morlet Wavelet, t-SNE, and k-Mean clustering to define behavior classes. 
  Recent advances in body part tracking [Pereira et al. (2019)](https://doi.org/10.1038/s41592-018-0234-5) allow to extimate a mouse pose. Here, we adopted behavioral mapping from [Berman et al. (2014)](https://doi.org/10.1098/rsif.2014.0672) for use with the body part position time series.
  
-![](docs/stackedMov_1_b (Converted).gif)
+![](docs/stackedMov_1_b.gif)
 
-![](docs/stackedMov_2_b (Converted).gif)
+![](docs/stackedMov_2_b.gif)
 
-![](docs/stackedMov_3_b (Converted).gif)
+![](docs/stackedMov_3_b.gif)
 
-![](docs/stackedMov_4_b (Converted).gif)
+![](docs/stackedMov_4_b.gif)
 
-![](docs/stackedMov_5_b (Converted).gif)
+![](docs/stackedMov_5_b.gif)
 
-![](docs/stackedMov_6_b (Converted).gif)
+![](docs/stackedMov_6_b.gif)
 
-![](docs/stackedMov_7_b (Converted).gif)
+![](docs/stackedMov_7_b.gif)
 
-![](docs/stackedMov_8_b (Converted).gif)
+![](docs/stackedMov_8_b.gif)
 
 ## Features and methods included
 
