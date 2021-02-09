@@ -3,11 +3,12 @@ This repository contains the analysis code for the manuscript.
 
 
 
+### MouseMotionMapper
+<img src="docs/MMM_logo.png" width="500" align="right">
 
-### MouseMotionMapper 
- a unique semi-supervised behavioral classification and behavioral labeling pipeline. 
- The framework makes use of deep neural network, PCA, Morlet Wavelet, t-SNE, and k-Mean clustering to define behavior classes. 
- Recent advances in body part tracking [Pereira et al. (2019)](https://doi.org/10.1038/s41592-018-0234-5) allow to extimate a mouse pose. Here, we adopted behavioral mapping from [Berman et al. (2014)](https://doi.org/10.1098/rsif.2014.0672) for use with the body part position time series.
+a unique semi-supervised behavioral classification and behavioral labeling pipeline. 
+The framework makes use of deep neural network, PCA, Morlet Wavelet, t-SNE, and k-Mean clustering to define behavior classes. 
+Recent advances in body part tracking [Pereira et al. (2019)](https://doi.org/10.1038/s41592-018-0234-5) allow to extimate a mouse pose. Here, we adopted behavioral mapping from [Berman et al. (2014)](https://doi.org/10.1098/rsif.2014.0672) for use with the body part position time series.
  
  Sample snippets from each behavioral class generated from movies:
 
