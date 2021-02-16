@@ -61,16 +61,17 @@ All MATLAB external toolboxes are included in the MouseMotionMapper/utilities su
 addpath(genpath('utilities'))
 
 ### data and meta data
-Download the raw data from 
+Download the raw data from dataspace.princeton.edu (https://doi.org/10.34770/bzkz-j672)
 
 
 ### Usage
 The best way to start is by looking at the various demos.
 
-#### Step 1: 
+#### Step 1: Embedding/Clustering
 
-#### Step 2: 
+#### Step 2: Embedding new data to behavior space
 
+#### Step 3: Fingerprinting
 
 ![](docs/Flowchart.png)
 
