@@ -1,6 +1,7 @@
 
-This repository contains the analysis code for the manuscript. 
 
+This repository contains the analysis code for the above manuscript. 
+------------
 
 
 ### MouseMotionMapper
