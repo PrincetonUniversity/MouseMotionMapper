@@ -1,6 +1,6 @@
 
-Deep behavioral phenotyping of mouse autism models using open-field behavior
-Ugne Klibaite, Mikhail Kislin, Jessica L. Verpeut, Xiaoting Sun, Joshua W. Shaevitz, Samuel S.-H. Wang
+Deep behavioral phenotyping of mouse autism models using open-field behavior.
+Ugne Klibaite, Mikhail Kislin, Jessica L. Verpeut, Xiaoting Sun, Joshua W. Shaevitz, Samuel S.-H. Wang.
 bioRxiv 2021.02.16.431500; doi: https://doi.org/10.1101/2021.02.16.431500
 (https://www.biorxiv.org/content/10.1101/2021.02.16.431500v1)
 
