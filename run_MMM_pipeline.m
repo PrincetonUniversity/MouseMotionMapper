@@ -1,4 +1,6 @@
 %% PIPELINE
+
+% Download dataset from https://doi.org/10.34770/bzkz-j672
 % calculate distances from body part positions
 
 xIdx = [1 2 5 6 7 8 12 13 14 15 16];
@@ -10,8 +12,8 @@ yIdx = [1 2 5 6 7 8 12 13 14 15 16];
 X = X(:); Y = Y(:);
 IDX = find(X~=Y);
 
-
-savePath = '/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/distSub/';
+basePath = fileparts(which('run_MMM_pipeline.m'));
+savePath = [basePath,filesep,'distSub'];
 for m = 1:60
     m
     for j = 1:5
@@ -76,8 +78,6 @@ for j = 1:num
     end
 end
 
-%save('/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/vecsVals_subSelect.mat','C','muv','currentImage');
-
 L = currentImage;
 muv = muv./L;
 C = C./L - muv'*muv;
@@ -85,8 +85,10 @@ C = C./L - muv'*muv;
 [vecs,vals] = eig(C);
 vals = flipud(diag(vals));
 vecs = fliplr(vecs);
+save(vecsVals_subSelect.mat','C','muv','currentImage', 'vecs','vals');
 
-load('/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/vecsVals_subSelect.mat','C','muv','currentImage','vecs','vals');
+%%
+load('vecsVals_subSelect.mat','C','muv','currentImage','vecs','vals');
 
 
 
@@ -151,25 +153,19 @@ toc
 tic
 C200 = kmeans(dataAll,200,'Replicates',10);
 toc
+save('trainingSet_new10.mat','dataAll','ydata','C100','C200');
 
+%%
 load('trainingSet_new10.mat','dataAll','ydata','C100','C200');
-
-
-
 
 eV = embeddingValues;
 eV(~outputStats.inConvHull,:) = outputStats.zGuesses(~outputStats.inConvHull,:);
 scatter(eV(:,1),eV(:,2),'.'); axis([-60 60 -60 60])
 
 
-fileName = '/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020'
+fileName = savePath;
 
-
-addpath('/Volumes/Fly_Courtship/MultiFlyAnalysis/utilities/')
-addpath('/Volumes/Fly_Courtship/MultiFlyAnalysis/tSNE/')
-addpath('/Volumes/Fly_Courtship/MultiFlyAnalysis/visualization/')
-addpath('/Volumes/Fly_Courtship/MultiFlyAnalysis/')
-
+addpath('utilities')
 
 load(fileName,'p1Dist');
 load(tData); %,'trainingSetData','ydata','cdata1','cdata2');
@@ -182,7 +178,7 @@ cdata2 = C200; % cdata2(1:2:end);
 %trainingEmbedding = ydata;
 
 fprintf(1,['training data = ' num2str(size(trainingSetData)) '\n']);
-load('/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/vecsVals_subSelect.mat');
+load('vecsVals_subSelect.mat');
 
 numProjections = 10; numModes = 10; pcaModes = 10;
 
@@ -217,20 +213,20 @@ fprintf(1,'Finding Embeddings\n');
     z = zValues; z(~inConvHull,:) = zGuesses(~inConvHull,:);
 
 [embeddingValues,outputStats] = findEmbeddings2(projections,trainingSetData,trainingEmbedding,parameters);          
-save(['/tigress/SHAEVITZ/klibaite/mouseREPO/MARCH_2020/EVnew/' fN '_RE.mat'],'embeddingValues','outputStats','fileName');
+save([basePath,filesep,'EVnew',filesep, fN , '_RE.mat'],'embeddingValues','outputStats','fileName');
 
 KK = 101;
 [cGuesses,pClusts] = reembedHDK(projections,parameters,trainingSetData,cdata1,KK);
-save(['/tigress/SHAEVITZ/klibaite/mouseREPO/MARCH_2020/C100new/' fN '_RE.mat'],'cGuesses','fileName','pClusts');
+save([basePath,filesep,'C100new',filesep,  fN, '_RE.mat'],'cGuesses','fileName','pClusts');
 clear cGuesses pClusts
 
 [cGuesses,pClusts] = reembedHDK(projections,parameters,trainingSetData,cdata2,KK);
-save(['/tigress/SHAEVITZ/klibaite/mouseREPO/MARCH_2020/C200new/' fN '_RE.mat'],'cGuesses','fileName','pClusts');
+save([basePath,filesep,'C200new',filesep,  fN, '_RE.mat'],'cGuesses','fileName','pClusts');
 
 
 %% read and organize
 
-savePath = '/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/';
+savePath = basePath;
 s1 = 'EVnew/'; s2 = 'C100new/'; s3 = 'C200new/';
 
 for i = 1:60
@@ -251,7 +247,7 @@ end
 
 
     
-load('/Volumes/fileset-shaevitz/klibaite/mouseREPO/MARCH_2020/e_filenames.mat','WTs1','WTs2','WTs3','ASDs1','ASDs2','ASDs3');
+load('e_filenames.mat','WTs1','WTs2','WTs3','ASDs1','ASDs2','ASDs3');
 
 WTev = cell(size(WTs1)); WTC1 = WTev; WTC2 = WTev;
 for i = 1:60
@@ -313,7 +309,7 @@ eV = embeddingValues;
 eV(~outputStats.inConvHull,:) = outputStats.zGuesses(~outputStats.inConvHull,:);
 
 
-load('/Volumes/Mouse_Data/colormapsMouse.mat')
+load('colormapsMouse.mat')
 
 eV = embeddingValues;
 eV(~outputStats.inConvHull,:) = outputStats.zGuesses(~outputStats.inConvHull,:);
@@ -324,18 +320,15 @@ scatter(eV(idx,1),eV(idx,2),200,1:length(idx),'.')
 colormap(cmap1)
 
 
-% visualize by length of dwell?
+%% visualize by length of dwell?
 
 
-load('/Volumes/Mouse_Data/mouse-behavior/ASD_WT_v.mat','vWT','vASD');
+load('ASD_WT_v.mat','vWT','vASD');
 
 
 te = WTev{1,1};
 tv = vWT{1,1};
 scatter(te(:,1),te(:,2),[],tv,'filled'); axis ij; caxis([0 10])
-
-
-
 
 fitOnly = 1;
 numGMM = 2;
@@ -362,17 +355,3 @@ figure(1); scatter(te(idx,1),te(idx,2),[],wr(idx),'filled');
 colormap(cmap3)
 figure(2); scatter(te(idx,1),te(idx,2),[],WTC1{1,1}(idx),'filled');
 colormap(cmap3)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
