@@ -1,9 +1,8 @@
 
 # Deep behavioral phenotyping of mouse autism models using open-field behavior.
 Ugne Klibaite, Mikhail Kislin, Jessica L. Verpeut, Xiaoting Sun, Joshua W. Shaevitz, Samuel S.-H. Wang.
-bioRxiv 2021.02.16.431500; doi: https://doi.org/10.1101/2021.02.16.431500
-(https://www.biorxiv.org/content/10.1101/2021.02.16.431500v1)
-
+Molecular Autism 13, 12 (2022). https://doi.org/10.1186/s13229-022-00492-8
+https://molecularautism.biomedcentral.com/articles/10.1186/s13229-022-00492-8
 This repository contains the analysis code for the above manuscript. 
 
 ------------
