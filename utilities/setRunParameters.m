@@ -261,10 +261,10 @@ function parameters = setRunParameters(parameters)
     end
     
     
-    if ~isfield(parameters,'basisImagePath') || isempty(parameters.basisImagePath) 
-        parameters.basisImagePath = basisImagePath;
-    end
-    parameters.basisImage = imread(parameters.basisImagePath);
+    %if ~isfield(parameters,'basisImagePath') || isempty(parameters.basisImagePath) 
+    %    parameters.basisImagePath = basisImagePath;
+    %end
+    %parameters.basisImage = imread(parameters.basisImagePath);
     
 
     if ~isfield(parameters,'initialPhi') || isempty(parameters.initialPhi)
