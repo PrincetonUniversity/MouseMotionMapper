@@ -1,14 +1,14 @@
 close all, clear all
 
 %% Check to make sure that folder actually exists.  Warn user if it doesn't.
-File_dir='/tigress/jverpeut/FMB_DREADD4/box/';
+File_dir='';
 if ~isdir(File_dir)
     errorMessage = sprintf('Error: The following folder does not exist:\n%s', File_dir);
     uiwait(warndlg(errorMessage));
     return;
 end
 % Get a list of all files in the folder with the desired file name pattern.
-filePattern = fullfile(File_dir, '*box_data.mat'); % Change to whatever pattern you need.
+filePattern = fullfile(File_dir, '*.mat'); % Change to whatever pattern you need.
 theFiles = dir(filePattern);
 for k = 1 : length(theFiles)
     baseFileName = theFiles(k).name;
